@@ -57,13 +57,13 @@
                 <br>
                 <input id="reg_password" class="input_register" type="password" title="3-30 symbols A-Z a-z 0-9" placeholder="Password">
                 <br>
-                <input class="with-gap" name="role" type="radio" id="asUser" checked/>
+                <input class="with-gap" name="reg_role" type="radio" id="asUser" checked/>
                 <label for="asUser">As user</label>
-                <input class="with-gap" name="role" type="radio" id="asManager" />
+                <input class="with-gap" name="reg_role" type="radio" id="asManager" />
                 <label for="asManager">As manager</label>
             </div>
         </div>
-        <button type="button" onclick="register(['reg_name','reg_email','reg_telephone','reg_password'],'registration.php')" class="center waves-effect waves-light btn btn-large indigo darken-2 white-text">Register</button>    </div>
+        <button type="button" onclick="register(['reg_name','reg_email','reg_telephone','reg_password','reg_role'],'registration.php')" class="center waves-effect waves-light btn btn-large indigo darken-2 white-text">Register</button>    </div>
 </div>
 </body>
 <footer class="fixed bottom">

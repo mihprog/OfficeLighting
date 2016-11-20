@@ -115,6 +115,10 @@ function validation(id,type) {
                 return false;
             }
         }break;
+        case 'role':
+        {
+            return true;
+        }break;
     }
 }
 
@@ -153,13 +157,15 @@ function register(arrId,serverFile)
         });
 
     }
-    else return false;
+    else {
+        alert('something');
+        return false;}
 }
 //функция успешной отправки ajax
 function successFunction(data) {
     switch (data)
     {
-        case 'wrong':
+        case 'fail':
             Materialize.toast('<img src="img/gandalf1.jpg">', 3000, 'rounded');
             break;
         case 'invalidData':
