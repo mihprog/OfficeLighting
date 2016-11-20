@@ -1,0 +1,125 @@
+body
+{
+    background: url("../img/background.jpg");
+}
+header
+{
+    background-color: black;
+    opacity: 0.5;
+    width: 100%;
+    padding: 10px;
+}
+header div
+{
+    max-width: 980px;
+}
+.logoutButton
+{
+    margin: 10px;
+}
+
+.container
+{
+    max-width: 980px;
+    margin: auto;
+    text-align: right;
+
+}
+#menu
+{
+    position: absolute;
+    top: 50px;
+    height: 65px;
+}
+
+
+#navbar
+{
+    margin: auto;
+    position: relative;
+    max-width: 980px;
+}
+#content
+{
+    position: absolute;
+    top: 115px;
+    width: 100%;
+}
+#UserContent
+{
+    position: absolute;
+    top: 115px;
+    width: 100%;
+    text-align: left;
+}
+#in_content
+{
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    width: 300px;
+}
+#in_UserContent
+{
+    padding: 10px;
+    /*margin: auto;*/
+    margin-left: 10%;
+    text-align: left;
+    width: 300px;
+    font-size: medium;
+}
+#in_UserContent.mobile
+{
+    padding: 10px;
+    margin: auto;
+    text-align: left;
+    width: 300px;
+}
+
+.card:hover
+{
+    box-shadow: 0 0 5px 3px grey;
+}
+#modalAuth
+{
+    width: 30%;
+}
+#modalAuth.mobile
+{
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+#modalEdit
+{
+    width: 30%;
+}
+#modalEdit.mobile
+{
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+#footer
+{
+    max-width: 980px;
+    margin: auto;
+    text-align: left;
+}
+
+footer
+{
+    font-size: large;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+
+}
+footer.mobile
+{
+    position: absolute;
+    bottom: -140px;
+}
+
+

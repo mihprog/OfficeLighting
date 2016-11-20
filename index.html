@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<header>
+    <div id="header" class="container">
+        <a class="modal-trigger indexButton" href="#modalAuth"><i class="material-icons">vpn_key</i></a>
+    </div>
+</header>
+<body>
+<nav id="menu" class="indigo darken-2">
+    <div id="navbar" class="nav-wrapper ">
+        <a href="#" data-activates="mobile" class="button-collapse">
+            <i class="material-icons">menu</i>
+        </a>
+        <a href="index.php" class="brand-logo"><i class="material-icons">contacts</i></a>
+        <ul class="side-nav" id="mobile">
+            <li><a href="index.php" class="brand-logo"><i class="material-icons">contacts</i></a></li>
+        </ul>
+    </div>
+</nav>
+<div id="content">
+    <!--модальное окно для авторизации-->
+    <div id="modalAuth" class="modal col s12 m3 blue-grey darken-1">
+        <div class="modal-content center">
+            <div id="fields" class="col">
+                <h4>Authorization</h4>
+                <form class="col s12 m6">
+                    <input id="log_email" type="email" class="validate" placeholder="Email">
+                    <input id="log_password" type="password" class="validate" placeholder="Password">
+                </form>
+            </div>
+            <div id="buttons" class="col">
+                <a href="#!" onclick="register(['log_email','log_password'],'auth.php')" class="waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Log in</a>
+            </div>
+        </div>
+    </div>
+    <h3 class="center">Office Lighting platform</h3>
+    <div id="in_content" class="container">
+
+        <h5>Join us</h5>
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <input id="reg_name" class="input_register" title="30 symbols maximum" type="text" placeholder="Name">
+                <br>
+                <input id="reg_email" class="input_register validate" title="50 symbols maximum" type="email" placeholder="Email">
+                <br>
+                <input id="reg_telephone" class="input_register validate" title="10-12 numbers" type="text" placeholder="Telephone">
+                <br>
+                <input id="reg_password" class="input_register" type="password" title="3-30 symbols A-Z a-z 0-9" placeholder="Password">
+                <br>
+                <input class="with-gap" name="role" type="radio" id="asUser" checked/>
+                <label for="asUser">As user</label>
+                <input class="with-gap" name="role" type="radio" id="asManager" />
+                <label for="asManager">As manager</label>
+            </div>
+        </div>
+        <button type="button" onclick="register(['reg_name','reg_email','reg_telephone','reg_password'],'registration.php')" class="center waves-effect waves-light btn btn-large indigo darken-2 white-text">Register</button>    </div>
+</div>
+</body>
+<footer class="fixed bottom">
+    <div id="footer">
+        <span>&copy;Mikhail Kravets</span>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-json-master/src/jquery.json.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/initialization.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </div>
+
+</footer>
