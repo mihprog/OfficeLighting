@@ -1,6 +1,5 @@
 <?php
 include_once "auth/AuthController.php";
-include_once "auth/AuthModel.php";
 include_once "additionalClasses/Validator.php";
 
 //получаем данные с клиента

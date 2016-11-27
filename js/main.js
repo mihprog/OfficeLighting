@@ -6,6 +6,7 @@ $(document).ready(function()
     if(w<400||h<500)
     {
         $('#modalAuth').addClass('mobile');
+        $('#modalPassword').addClass('mobile');
         $('#modalEdit').addClass('mobile');
         $('footer').addClass('mobile');
         $('#in_UserContent').addClass('mobile');
@@ -20,6 +21,7 @@ $(document).ready(function()
     {
         $('#modalAuth').removeClass('mobile');
         $('#modalEdit').removeClass('mobile');
+        $('#modalPassword').removeClass('mobile');
         $('footer').removeClass('mobile');
         $('#in_UserContent').removeClass('mobile')
     }
@@ -158,7 +160,7 @@ function register(arrId,serverFile)
 
     }
     else {
-        alert('something');
+        //alert('something');
         return false;}
 }
 //функция успешной отправки ajax
@@ -186,7 +188,8 @@ function successFunction(data) {
             getUserData();
             break;
         default:
-            window.location = data;
+            //window.location = data;
+            alert(data);
     }
 }
 //при помощи ajax получаем данные о пользователе
@@ -203,8 +206,5 @@ function putData(data)
 {
     //alert(data);
     data = JSON.parse(data);
-    $('#edt_name').val(data['name']);
-    $('#name').html("Hello "+data['name']+"!");
-    $('#edt_telephone').val(data['telephone']);
-    $('#telephone').html("Your telephone: "+data['telephone']);
+    alert(data.email);
 }

@@ -21,4 +21,8 @@ class AuthController
             return $result;
         }
     }
+
+    public function auth($email,$password){
+        return'completed';
+    }
 }
