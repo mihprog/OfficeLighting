@@ -17,11 +17,14 @@
 </header>
 <nav id="menu" class="indigo darken-2">
 </nav>
+<!--выезжающая менюшка с данными и их редактированием-->
 <ul id="slide-out" class="side-nav">
     <li><div class="userView">
-        <a href=""><span class="black-text">John Doe</span></a>
-        <a href=""><span class="black-text">jdandturk@gmail.com</span></a>
-        <a href=""><span class="black-text">+380963803464</span></a>
+        <span class="black-text"><?php echo $managerData['name']?></span>
+        <br>
+        <span class="black-text"><?php echo $managerData['email']?></span>
+        <br>
+        <span class="black-text"><?php echo $managerData['telephone']?></span>
     </div></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect modal-trigger" href="#modalEdit">Change info</a></li>
@@ -48,8 +51,8 @@
             <div id="fieldsEdit" class="col">
                 <h4>Editing your data</h4>
                 <form class="col s12 m6">
-                    <input id="edt_name" type="text" class="validate" placeholder="Name">
-                    <input id="edt_telephone" type="text" class="validate" placeholder="Telephone">
+                    <input id="edt_name" type="text" class="validate" placeholder="Name" value="<?php echo $managerData['name']?>">
+                    <input id="edt_telephone" type="text" class="validate" placeholder="Telephone" value="<?php echo $managerData['telephone']?>">
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
@@ -60,6 +63,7 @@
             </div>
         </div>
     </div>
+    <!--модальное окно для редактирования пароля-->
     <div id="modalPassword" class="modal col s12 m3 blue-grey darken-1">
         <div class="modal-content center">
             <div id="fieldsPassword" class="col">
@@ -78,31 +82,46 @@
         </div>
     </div>
 
-    <!--<div id="in_UserContent" class="container">-->
     <div class="row">
-        <div class="card blue-grey darken-1 right-align col s12 m3">
+        <!--карточка с данными менеджера-->
+        <div class="card blue-grey darken-1 left-align col s12 m4">
             <div class="card-content white-text">
-                <h5 id="name">Hello {{ name }}!</h5>
+                <h5 id="name">Hello <?php echo $managerData['name']?>!</h5>
                 <br>
-                <span id="email">Your email: {{ email }}</span>
+                <span id="email">Your email: <?php echo $managerData['email']?></span>
                 <br>
-                <span id="telephone">Your telephone: {{ telephone }}</span>
+                <span id="telephone">Your telephone: <?php echo $managerData['telephone']?></span>
                 <br>
                 <a data-activates="slide-out" class="button-collapse btn-floating btn-large red">
                     <i class="small indigo darken-2 material-icons">mode_edit</i>
                 </a>
             </div>
         </div>
-    <!--</div>-->
-            <div class="col s12 m6">
+            <div class="col s12 m8">
                 <ul class="tabs indigo darken-2">
-                    <li class="tab col s3"><a class="active white-text" href="#test1">Messages</a></li>
-                    <li class="tab col s3"><a class="white-text" href="#test2">Rooms</a></li>
+                    <li class="tab col s3"><a class="active white-text" href="#messages">Messages</a></li>
+                    <li class="tab col s3"><a class="white-text" href="#rooms">Rooms</a></li>
                 </ul>
-                <div id="test1" class="col s12">Messages</div>
-                <div id="test2" class="col s12">Rooms</div>
+                <!--все неотвеченные сообщения-->
+                <div id="messages" class="col s12">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <?php foreach($messages as $message):?>
+                        <li>
+                            <div id="message<?php echo $message['id']?>" class="collapsible-header blue-grey darken-1 white-text"><?php echo $message['person']?><i onclick="$('#message<?php echo $message['id']?>').remove();" class="close material-icons right">close</i></div>
+                            <div class="collapsible-body"><p><?php echo $message['message']?></p></div>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                <!--все обслуживаемые комнаты-->
+                <div id="rooms" class="col s12">
+                    <div class="collection">
+                        <?php foreach($rooms as $room):?>
+                        <a href="#<?php echo $room['id']?>" class="collection-item blue-grey darken-1 white-text"><span class="badge white-text"><?php echo $room['numPersons']?></span><?php echo $room['name']?></a>
+                        <?php endforeach;?>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 </body>
@@ -115,7 +134,6 @@
         <script type="text/javascript" src="js/initialization.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </div>
-
 </footer>
 </body>
 </html>
