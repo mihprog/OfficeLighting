@@ -20,11 +20,11 @@
 <!--выезжающая менюшка с данными и их редактированием-->
 <ul id="slide-out" class="side-nav">
     <li><div class="userView">
-        <span class="black-text"><?php echo $managerData['name']?></span>
+        <span class="black-text">Name: <?php echo $managerData['name']?></span>
         <br>
-        <span class="black-text"><?php echo $managerData['email']?></span>
+        <span class="black-text">Email: <?php echo $managerData['email']?></span>
         <br>
-        <span class="black-text"><?php echo $managerData['telephone']?></span>
+        <span class="black-text">Telephone: <?php echo $managerData['telephone']?></span>
     </div></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect modal-trigger" href="#modalEdit">Change info</a></li>
