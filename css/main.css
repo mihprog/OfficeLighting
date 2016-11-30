@@ -141,4 +141,6 @@ footer.mobile
     bottom: -140px;
 }
 
-
+.fa-long-arrow-left{
+    cursor: pointer;
+}

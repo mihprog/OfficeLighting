@@ -27,7 +27,7 @@
                 <h4>Are you really want to log out?</h4>
             </div>
             <div id="buttons" class="col">
-                <a href="php/logout.php" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Yes</a>
+                <a href="../logout.php" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Yes</a>
                 <a href="#" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">No</a>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div id="fieldsEdit" class="col">
                 <h4>Editing your data</h4>
                 <form class="col s12 m6">
-                    <input id="edt_name" type="text" class="validate" placeholder="Name" value="<?php echo $managerData['name']?>">
+                    <input id="edt_name" type="text" class="validate" placeholder="Name" value="<?php echo $roomInfo['roomName']?>">
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
@@ -53,12 +53,12 @@
         <!--карточка с данными комнаты-->
         <div class="card blue-grey darken-1 left-align col s12 m4">
             <div class="card-content white-text">
-                <h5><i class="fa fa-long-arrow-left fa-3x" title="Back"></i></h5>
-                <h5 id="name">Room <?php ?></h5>
+                <h5><a class="white-text" href="managerFront.php?mId=<?php echo $roomInfo['managerId']?>"><i class="fa fa-long-arrow-left fa-3x" title="Back"></i></a></h5>
+                <h5 id="name">Room <?php echo $roomInfo['roomName']?></h5>
                 <br>
-                <span id="email">Members: <?php ?></span>
+                <span id="email">Members: <?php echo $roomInfo['membCount']?></span>
                 <br>
-                <span id="telephone">Messages: <?php ?></span>
+                <span id="telephone">Messages: <?php echo $roomInfo['messCount']?></span>
                 <br>
                 <a class="btn-floating btn-large red modal-trigger" href="#modalEdit"">
                     <i class="small indigo darken-2 material-icons">mode_edit</i>
@@ -108,7 +108,7 @@
                         <br>
                         <form action="#">
                             <p class="range-field">
-                                <input class="indigo darken-2" type="range" id="test5" min="100" max="255"/>
+                                <input class="indigo darken-2" type="range" id="lightColor" min="100" max="255"/>
                             </p>
                         </form>
                     </div>
@@ -126,6 +126,12 @@
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/initialization.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script>
+            var lightColor = <?php echo $roomInfo['light']?>;
+            $(document).ready(function(){
+                $('#lightColor').val(lightColor);
+            });
+        </script>
     </div>
 </footer>
 </body>

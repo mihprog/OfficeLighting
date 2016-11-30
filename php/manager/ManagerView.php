@@ -40,7 +40,7 @@
                 <h4>Are you really want to log out?</h4>
             </div>
             <div id="buttons" class="col">
-                <a href="php/logout.php" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Yes</a>
+                <a href="../logout.php" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Yes</a>
                 <a href="#" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">No</a>
             </div>
         </div>

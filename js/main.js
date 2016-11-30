@@ -12,7 +12,8 @@ $(document).ready(function()
     });
     $('.value').bind('DOMSubtreeModified',function(){
         $('#light-bulb2').css('background', 'rgb(255,255,'+1*$('.value').html()+')');
-        console.log($('.value').html());
+        this.click(console.log($('.value').html()));
+
     });
 
     var w = $(document).width();

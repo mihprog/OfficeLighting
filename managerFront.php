@@ -9,4 +9,4 @@ $messages = $managerController->getMessagesByManId($_SESSION['managerId']);
 $rooms = $managerController->getRoomsByManId($_SESSION['managerId']);
 $managerData = $managerController->getManagerData($_SESSION['managerId']);
 
-include 'manager.php';
+include 'php/manager/ManagerView.php';
