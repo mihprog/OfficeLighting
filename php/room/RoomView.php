@@ -11,6 +11,7 @@
     <link href="css/bulb.css" rel="stylesheet">
 </head>
 <body>
+<input type="hidden" id="roomId" value="<?php echo $roomInfo['roomId'];?>">
 <header>
     <div id="header" class="container">
         <a class="modal-trigger indexButton" href="#modalAuth"><i class="material-icons">vpn_key</i></a>
@@ -42,7 +43,7 @@
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
-                <a onclick="register(['edt_name'],'edit.php?action=data')" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
+                <a onclick="sendWithAction({'name':$('#edt_name').val()},'edit_room_name','roomFront.php',roomNameEdit);" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
                 <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>
@@ -54,11 +55,11 @@
         <div class="card blue-grey darken-1 left-align col s12 m4">
             <div class="card-content white-text">
                 <h5><a class="white-text" href="managerFront.php?mId=<?php echo $roomInfo['managerId']?>"><i class="fa fa-long-arrow-left fa-3x" title="Back"></i></a></h5>
-                <h5 id="name">Room <?php echo $roomInfo['roomName']?></h5>
+                <h5 id="roomName">Room <?php echo $roomInfo['roomName']?></h5>
                 <br>
-                <span id="email">Members: <?php echo $roomInfo['membCount']?></span>
+                <span id="countMembers">Members: <?php echo $roomInfo['membCount']?></span>
                 <br>
-                <span id="telephone">Messages: <?php echo $roomInfo['messCount']?></span>
+                <span id="countMessages">Messages: <?php echo $roomInfo['messCount']?></span>
                 <br>
                 <a class="btn-floating btn-large red modal-trigger" href="#modalEdit"">
                     <i class="small indigo darken-2 material-icons">mode_edit</i>
@@ -73,22 +74,30 @@
             <!--сотрудники-->
             <div id="members" class="col s12">
                 <div class="col s12 m6">
-                    <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div id="person1" class="collapsible-header blue-grey darken-1 white-text">person1<i onclick="" class="close material-icons right">trending_flat</i></div>
-                            <div  class="collapsible-body"><p>person1</p></div>
+                    <ul class="collapsible" data-collapsible="accordion" id="users">
+                        <?php foreach($people as $freeUser):?>
+                        <li id="user_<?php echo $freeUser['id'];?>">
+                            <div class="collapsible-header blue-grey darken-1 white-text"><?php echo $freeUser['name'];?>
+                                <i onclick="" class="close material-icons right">trending_flat</i>
+                            </div>
+                            <div  class="collapsible-body"><p><?php echo $freeUser['description'];?></p></div>
                         </li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
                 <div class="col s12 m6">
                     <div class="card blue-grey darken-1">
                         <div class="card-content">
                             <h5 class="white-text center">In the room</h5>
-                            <ul class="collapsible" data-collapsible="accordion">
-                                <li>
-                                    <div id="person2" class="collapsible-header white black-text">person1<i onclick="" class="close material-icons right">close</i></div>
-                                    <div  class="collapsible-body"><p>person1</p></div>
+                            <ul class="collapsible" data-collapsible="accordion" id="members">
+                                <?php foreach($roomMembers as $user):?>
+                                <li id="member_<?php echo $user['id'];?>">
+                                    <div  class="collapsible-header white black-text"><?php echo $user['name'];?>
+                                        <i onclick="sendWithAction({'id':<?php echo $user['id'];?>},'fromRoom','roomFront.php',userFromRoom)" class="close material-icons right">close</i>
+                                    </div>
+                                    <div  class="collapsible-body"><p><?php echo $user['description'];?></p></div>
                                 </li>
+                                <?php endforeach;?>
                             </ul>
                         </div>
                     </div>
@@ -126,6 +135,8 @@
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/initialization.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/ajaxFunctions.js"></script>
+
         <script>
             var lightColor = <?php echo $roomInfo['light']?>;
             $(document).ready(function(){

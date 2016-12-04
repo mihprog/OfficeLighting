@@ -1,20 +1,7 @@
 //адаптивность модального окна
 $(document).ready(function()
 {
-    $('.cube-switch .switch').click(function() {
-        if ($('.cube-switch').hasClass('active')) {
-            $('.cube-switch').removeClass('active');
-            $('#light-bulb2').css({'opacity': '0'});
-        } else {
-            $('.cube-switch').addClass('active');
-            $('#light-bulb2').css({'opacity': '0.8'});
-        }
-    });
-    $('.value').bind('DOMSubtreeModified',function(){
-        $('#light-bulb2').css('background', 'rgb(255,255,'+1*$('.value').html()+')');
-        this.click(console.log($('.value').html()));
 
-    });
 
     var w = $(document).width();
     var h = $(document).height();

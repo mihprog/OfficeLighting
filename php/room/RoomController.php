@@ -19,4 +19,10 @@ class RoomController
         $members = $this->roomModel->getRoomMembers($id);
         return $members;
     }
+    public function setRoomName($name){
+        return $this->roomModel->setRoomName($name);
+    }
+    public function userFromRoom($id){
+        return $this->roomModel->userFromRoom($id);
+    }
 }
