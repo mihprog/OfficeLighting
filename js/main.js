@@ -1,7 +1,21 @@
 //адаптивность модального окна
 $(document).ready(function()
 {
-
+//лампочка
+    $('.cube-switch .switch').click(function() {
+        if ($('.cube-switch').hasClass('active')) {
+            $('.cube-switch').removeClass('active');
+            $('#light-bulb2').css({'opacity': '0'});
+        } else {
+            $('.cube-switch').addClass('active');
+            $('#light-bulb2').css({'opacity': '0.8'});
+        }
+    });
+    //логирование изменения цветовой температуры
+    $('.value').bind('DOMSubtreeModified',function(){
+        $('#light-bulb2').css('background', 'rgb(255,255,'+1*$('.value').html()+')');
+        this.click(console.log($('.value').html()));
+    });
 
     var w = $(document).width();
     var h = $(document).height();
@@ -10,6 +24,7 @@ $(document).ready(function()
         $('#modalAuth').addClass('mobile');
         $('#modalPassword').addClass('mobile');
         $('#modalEdit').addClass('mobile');
+        $('#modalDelete').addClass('mobile');
         $('footer').addClass('mobile');
         $('#in_UserContent').addClass('mobile');
     }
@@ -23,6 +38,7 @@ $(document).ready(function()
     {
         $('#modalAuth').removeClass('mobile');
         $('#modalEdit').removeClass('mobile');
+        $('#modalDelete').removeClass('mobile');
         $('#modalPassword').removeClass('mobile');
         $('footer').removeClass('mobile');
         $('#in_UserContent').removeClass('mobile')

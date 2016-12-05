@@ -25,4 +25,11 @@ class RoomController
     public function userFromRoom($id){
         return $this->roomModel->userFromRoom($id);
     }
+    public function userToRoom($userId,$roomId){
+        return $this->roomModel->userToRoom($userId,$roomId);
+    }
+    public function delRoom($roomId){
+        return $this->roomModel->delRoom($roomId);
+    }
+
 }

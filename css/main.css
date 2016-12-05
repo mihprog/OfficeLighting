@@ -101,6 +101,16 @@ header div
     margin-left: 0;
     margin-bottom: 0;
 }
+#modalDelete
+{
+    width: 30%;
+}
+#modalDelete.mobile
+{
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+}
 #modalPassword
 {
     width: 30%;
@@ -143,4 +153,9 @@ footer.mobile
 
 .fa-long-arrow-left{
     cursor: pointer;
+}
+
+.people{
+    height: 400px;
+    overflow: auto;
 }

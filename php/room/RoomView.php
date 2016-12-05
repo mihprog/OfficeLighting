@@ -50,6 +50,20 @@
             </div>
         </div>
     </div>
+    <!--модальное окно для удаления комнаты-->
+    <div id="modalDelete" class="modal col s12 m3 blue-grey darken-1">
+        <div class="modal-content center">
+            <div id="fieldsEdit" class="col">
+                <h4>Delete room?</h4>
+            </div>
+            <div id="" class="col">
+                <a onclick="sendWithAction({'id':<?php echo $roomInfo['roomId']?>},'delRoom','roomFront.php',delRoom)" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Delete</a>
+                <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
+                    Close
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <!--карточка с данными комнаты-->
         <div class="card blue-grey darken-1 left-align col s12 m4">
@@ -61,8 +75,11 @@
                 <br>
                 <span id="countMessages">Messages: <?php echo $roomInfo['messCount']?></span>
                 <br>
-                <a class="btn-floating btn-large red modal-trigger" href="#modalEdit"">
+                <a title="edit room" class="btn-floating btn-large red modal-trigger" href="#modalEdit"">
                     <i class="small indigo darken-2 material-icons">mode_edit</i>
+                </a>
+                <a title="delete room" class="btn-floating btn-large red modal-trigger right" href="#modalDelete"">
+                <i class="small indigo darken-2 material-icons">delete</i>
                 </a>
             </div>
         </div>
@@ -72,20 +89,20 @@
                 <li class="tab col s3"><a class="white-text" href="#lighting">Lighting</a></li>
             </ul>
             <!--сотрудники-->
-            <div id="members" class="col s12">
-                <div class="col s12 m6">
+            <div class="col s12">
+                <div class="col s12 m6 people">
                     <ul class="collapsible" data-collapsible="accordion" id="users">
                         <?php foreach($people as $freeUser):?>
                         <li id="user_<?php echo $freeUser['id'];?>">
                             <div class="collapsible-header blue-grey darken-1 white-text"><?php echo $freeUser['name'];?>
-                                <i onclick="" class="close material-icons right">trending_flat</i>
+                                <i onclick="sendWithAction({'userId':<?php echo $freeUser['id'];?>,'roomId':<?php echo $roomInfo['roomId']?>},'toRoom','roomFront.php',userToRoom)" class="close material-icons right">trending_flat</i>
                             </div>
                             <div  class="collapsible-body"><p><?php echo $freeUser['description'];?></p></div>
                         </li>
                         <?php endforeach;?>
                     </ul>
                 </div>
-                <div class="col s12 m6">
+                <div class="col s12 m6 people">
                     <div class="card blue-grey darken-1">
                         <div class="card-content">
                             <h5 class="white-text center">In the room</h5>

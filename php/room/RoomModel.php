@@ -18,7 +18,13 @@ class RoomModel
     }
     public function userFromRoom($id){
         //метод-заглушка для удаления пользователя из комнаты
-        return array('id'=>$id,'name'=>'member0','description'=>'member0 description');
+        return array('id'=>$id,'roomId'=>'0','name'=>'member0','description'=>'member0 description');
+    }
+    public function userToRoom($userId,$roomId){
+        return array('id'=>$userId,'roomId'=>$roomId,'name'=>'member0','description'=>'member0 description');
+    }
+    public function delRoom($roomId){
+        return array('managerId'=>'1');
     }
 
 }

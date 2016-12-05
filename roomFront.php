@@ -16,9 +16,20 @@ if(isset($_GET['action'])){
         if(!$res)echo 'fail';
         else echo json_encode($res);
     }
+    elseif ($_GET['action']=='toRoom'){
+        $userId = json_decode($_POST['data'])->userId;
+        $roomId = json_decode($_POST['data'])->roomId;
+        $res = $roomController->userToRoom($userId,$roomId);
+        if(!$res)echo 'fail';
+        else echo json_encode($res);
+    }
+    elseif ($_GET['action']=='delRoom'){
+        $roomId = json_decode($_POST['data'])->id;
+        $res = $roomController->delRoom($roomId);
+        if(!$res)echo 'fail';
+        else echo json_encode($res);
+    }
 }
-
-
 else{
     $roomInfo = $roomController->getInfo($_GET['roomId']);
     $roomMembers = $roomController->getRoomMembers($_GET['roomId']);
