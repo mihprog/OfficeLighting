@@ -52,6 +52,7 @@ function userToRoom(response){
     countMembersBlock.html('Members: '+ countMembers);
 }
 
+//функция обратного вызова для удаления кабинета
 function delRoom(response){
     var manager = JSON.parse(response);
     if(response!='fail') location.href='http://officelighting.com/managerFront.php?managerId='+manager.managerId;

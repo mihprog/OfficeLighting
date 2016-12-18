@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Room</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/materialize.css">
+    <link rel="shortcut icon" href="/img/favicon.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/bulb.css" rel="stylesheet">
 </head>
@@ -147,12 +147,12 @@
 <footer class="fixed bottom">
     <div id="footer">
         <span>&copy;Mikhail Kravets</span>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery-json-master/src/jquery.json.js"></script>
-        <script type="text/javascript" src="js/materialize.js"></script>
-        <script type="text/javascript" src="js/initialization.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/ajaxFunctions.js"></script>
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/jquery-json-master/src/jquery.json.js"></script>
+        <script type="text/javascript" src="/js/materialize.js"></script>
+        <script type="text/javascript" src="/js/initialization.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
+        <script type="text/javascript" src="/js/ajaxFunctions.js"></script>
 
         <script>
             var lightColor = <?php echo $roomInfo['light']?>;
