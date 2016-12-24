@@ -26,5 +26,8 @@ class RoomModel
     public static function delRoom($roomId){
         return array('managerId'=>'1');
     }
+    public static function changeLight($newLight){
+        return true;
+    }
 
 }

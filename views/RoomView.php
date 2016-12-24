@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/materialize.css">
     <link rel="shortcut icon" href="/img/favicon.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/bulb.css" rel="stylesheet">
+    <link href="/css/bulb.css" rel="stylesheet">
 </head>
 <body>
 <input type="hidden" id="roomId" value="<?php echo $roomInfo['roomId'];?>">
@@ -43,7 +43,7 @@
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
-                <a onclick="sendWithAction({'name':$('#edt_name').val()},'edit_room_name','roomFront.php',roomNameEdit);" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
+                <a onclick="sendWithAction({'name':$('#edt_name').val()},'edit_room_name','<?php echo $roomInfo['roomId']?>/edit_room_name/',roomNameEdit);" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
                 <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>
@@ -57,7 +57,7 @@
                 <h4>Delete room?</h4>
             </div>
             <div id="" class="col">
-                <a onclick="sendWithAction({'id':<?php echo $roomInfo['roomId']?>},'delRoom','roomFront.php',delRoom)" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Delete</a>
+                <a onclick="sendWithAction({'id':<?php echo $roomInfo['roomId']?>},'delRoom','<?php echo $roomInfo['roomId']?>/delRoom/',delRoom)" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Delete</a>
                 <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>
@@ -68,7 +68,7 @@
         <!--карточка с данными комнаты-->
         <div class="card blue-grey darken-1 left-align col s12 m4">
             <div class="card-content white-text">
-                <h5><a class="white-text" href="managerFront.php?mId=<?php echo $roomInfo['managerId']?>"><i class="fa fa-long-arrow-left fa-3x" title="Back"></i></a></h5>
+                <h5><a class="white-text" href="http://officelighting.com/manager/<?php echo $roomInfo['managerId']?>"><i class="fa fa-long-arrow-left fa-3x" title="Back"></i></a></h5>
                 <h5 id="roomName">Room <?php echo $roomInfo['roomName']?></h5>
                 <br>
                 <span id="countMembers">Members: <?php echo $roomInfo['membCount']?></span>
@@ -95,7 +95,7 @@
                         <?php foreach($people as $freeUser):?>
                         <li id="user_<?php echo $freeUser['id'];?>">
                             <div class="collapsible-header blue-grey darken-1 white-text"><?php echo $freeUser['name'];?>
-                                <i onclick="sendWithAction({'userId':<?php echo $freeUser['id'];?>,'roomId':<?php echo $roomInfo['roomId']?>},'toRoom','roomFront.php',userToRoom)" class="close material-icons right">trending_flat</i>
+                                <i onclick="sendWithAction({'userId':<?php echo $freeUser['id'];?>,'roomId':<?php echo $roomInfo['roomId']?>},'toRoom','<?php echo $roomInfo['roomId']?>/toRoom/',userToRoom)" class="close material-icons right">trending_flat</i>
                             </div>
                             <div  class="collapsible-body"><p><?php echo $freeUser['description'];?></p></div>
                         </li>
@@ -110,7 +110,7 @@
                                 <?php foreach($roomMembers as $user):?>
                                 <li id="member_<?php echo $user['id'];?>">
                                     <div  class="collapsible-header white black-text"><?php echo $user['name'];?>
-                                        <i onclick="sendWithAction({'id':<?php echo $user['id'];?>},'fromRoom','roomFront.php',userFromRoom)" class="close material-icons right">close</i>
+                                        <i onclick="sendWithAction({'id':<?php echo $user['id'];?>},'fromRoom','<?php echo $roomInfo['roomId']?>/fromRoom/',userFromRoom)" class="close material-icons right">close</i>
                                     </div>
                                     <div  class="collapsible-body"><p><?php echo $user['description'];?></p></div>
                                 </li>
@@ -125,7 +125,7 @@
                 <div class="card blue-grey darken-1 left-align col s12 ">
                     <div class="card-content white-text">
                         <div href="" class="cube-switch">
-                            <span class="switch">
+                            <span class="switch" onclick="changeLight(<?php echo $roomInfo['roomId']?>);">
                                 <span class="switch-state off">Off</span>
                                 <span class="switch-state on">On</span>
                             </span>

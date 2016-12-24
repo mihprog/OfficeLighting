@@ -20,11 +20,11 @@
 <!--выезжающая менюшка с данными и их редактированием-->
 <ul id="slide-out" class="side-nav">
     <li><div class="userView">
-        <span class="black-text">Name: <?php echo $managerData['name']?></span>
+        <span class="black-text" id="span_name">Name: <?php echo $managerData['name']?></span>
         <br>
         <span class="black-text">Email: <?php echo $managerData['email']?></span>
         <br>
-        <span class="black-text">Telephone: <?php echo $managerData['telephone']?></span>
+        <span class="black-text" id="span_tel">Telephone: <?php echo $managerData['telephone']?></span>
     </div></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect modal-trigger" href="#modalEdit">Change info</a></li>
@@ -56,7 +56,7 @@
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
-                <a onclick="register(['edt_name','edt_telephone'],'edit.php?action=data')" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
+                <a onclick="editManager($('#edt_name').val(),$('#edt_telephone').val())" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
                 <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>
@@ -107,8 +107,11 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <?php foreach($messages as $message):?>
                         <li>
-                            <div id="message<?php echo $message['id']?>" class="collapsible-header blue-grey darken-1 white-text"><?php echo $message['person']?><i onclick="$('#message<?php echo $message['id']?>').remove();" class="close material-icons right">close</i></div>
-                            <div class="collapsible-body"><p><?php echo $message['message']?></p></div>
+                            <div id="message<?php echo $message['id']?>" class="collapsible-header blue-grey darken-1 white-text"><?php echo $message['person']?>
+                                <i onclick="removeMessage(<?php echo $message['id']?>)" class="close material-icons right">close
+                                </i>
+                            </div>
+                            <div id="body<?php echo $message['id']?>" class="collapsible-body"><p><?php echo $message['message']?></p></div>
                         </li>
                         <?php endforeach;?>
                     </ul>
@@ -117,7 +120,7 @@
                 <div id="rooms" class="col s12">
                     <div class="collection">
                         <?php foreach($rooms as $room):?>
-                        <a href="#<?php echo $room['id']?>" class="collection-item blue-grey darken-1 white-text"><span class="badge white-text"><?php echo $room['numPersons']?></span><?php echo $room['name']?></a>
+                        <a href="http://officelighting.com/room/<?php echo $room['id']?>" class="collection-item blue-grey darken-1 white-text"><span class="badge white-text"><?php echo $room['numPersons']?></span><?php echo $room['name']?></a>
                         <?php endforeach;?>
                     </div>
                 </div>
@@ -133,6 +136,7 @@
         <script type="text/javascript" src="/js/materialize.js"></script>
         <script type="text/javascript" src="/js/initialization.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
+        <script type="text/javascript" src="/js/ajaxFunctions.js"></script>
     </div>
 </footer>
 </body>

@@ -11,4 +11,17 @@ class ManagerController
 
         include_once 'views/ManagerView.php';
     }
+    public function actionRmmess(){
+        $messId = $_POST['data'];
+        if(ManagerModel::removeMessage($messId))echo $messId;
+    }
+    public function actionEditdata(){
+        $data = json_decode($_POST['data']);
+        $newName = $data->name;
+        $newTelephone = $data->tel;
+        echo json_encode(ManagerModel::editData($newName,$newTelephone));
+    }
+    public function actionEditpswd(){
+
+    }
 }

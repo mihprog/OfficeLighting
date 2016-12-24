@@ -95,7 +95,7 @@
                         <?php foreach($people as $freeUser):?>
                         <li id="user_<?php echo $freeUser['id'];?>">
                             <div class="collapsible-header blue-grey darken-1 white-text"><?php echo $freeUser['name'];?>
-                                <i onclick="sendWithAction({'userId':<?php echo $freeUser['id'];?>,'roomId':<?php echo $roomInfo['roomId']?>},'toRoom','roomFront.php',userToRoom)" class="close material-icons right">trending_flat</i>
+                                <i onclick="sendWithAction({'userId':<?php echo $freeUser['id'];?>,'roomId':<?php echo $roomInfo['roomId']?>},'toRoom','room/<?php echo $roomInfo['roomId']?>',userToRoom)" class="close material-icons right">trending_flat</i>
                             </div>
                             <div  class="collapsible-body"><p><?php echo $freeUser['description'];?></p></div>
                         </li>

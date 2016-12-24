@@ -13,4 +13,10 @@ class ManagerModel
     public static function getManagerData($id){
         return array('name'=>'Manager1','email'=>'manager@man.com','telephone'=>'+380963803464');
     }
+    public static function removeMessage($id){
+        return true;
+    }
+    public static function editData($name,$telephone){
+        return array('newName'=>'newManagerName','newTel'=>'+380963803463');
+    }
 }

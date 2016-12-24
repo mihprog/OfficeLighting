@@ -118,7 +118,7 @@
     height: 150px;
     top: 5%;
     left: 40%;
-    background: url('../img/lightbulb.png') no-repeat -150px 0;
+    background: url('/img/lightbulb.png') no-repeat -150px 0;
     cursor: move;
     z-index: 800;
 }

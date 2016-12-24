@@ -159,3 +159,6 @@ footer.mobile
     height: 400px;
     overflow: auto;
 }
+.messageCard{
+    margin-left: 150px!important;
+}
