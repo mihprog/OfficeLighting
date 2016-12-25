@@ -12,6 +12,7 @@ return array(
     'employee/([0-9]+)/sendmessage'=> 'employee/sendmessage/$1',
     'employee/([0-9]+)'=> 'employee/index/$1',
     'post' => 'employees/post',
-    'test' => 'site/test',
+    'reg' => 'site/reg',
+    'auth' => 'site/auth',
     '' => 'site/index',
 );

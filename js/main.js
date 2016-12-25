@@ -135,7 +135,11 @@ function validation(id,type) {
                 return false;
             }
         }break;
-        case 'role':
+        case 'asUser':
+        {
+            return true;
+        }break;
+        case 'asManager':
         {
             return true;
         }break;
@@ -146,7 +150,7 @@ function validation(id,type) {
 //функция для отправки данных регистрации на сервер
 // с предварительной проверкой валидности
 //возвращает false если данные не валидные или же отрабатывает ajax
-function register(arrId,serverFile)
+function register(arrId,action)
 {
     //проверяем валидность всех полей
     var c = 0;
@@ -167,10 +171,12 @@ function register(arrId,serverFile)
             var id = arrId[j];
             prejson[id]=$('#'+id).val();
         }
+        if($('#asUser').attr('checked'))prejson['role'] = 'user';
+        else prejson['role'] = 'manager';
         var res = JSON.stringify(prejson);
 
         $.ajax({
-            url: 'php/'+serverFile,
+            url: 'http://officelighting.com/'+action,
             type: "POST",
             data:'regData='+res,
             success: successFunction
@@ -199,7 +205,7 @@ function successFunction(data) {
             break;
         case 'complete':
             Materialize.toast('Registration completed!', 3000, 'rounded');
-            Materialize.toast('Check your email to confirm the registration.', 3000, 'rounded');
+            //Materialize.toast('Check your email to confirm the registration.', 3000, 'rounded');
             break;
         case 'EditComplete':
             Materialize.toast('Edit completed!', 3000, 'rounded');
@@ -207,7 +213,7 @@ function successFunction(data) {
             break;
         default:
             //window.location = data;
-            alert(data);
+            //alert(data);
     }
 }
 //при помощи ajax получаем данные о пользователе
