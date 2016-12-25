@@ -1,33 +1,48 @@
 <?php
 
+require_once(ROOT.'/components/ServerApi.php');
+
 class RoomModel
 {
     public static function getRoomInfo($roomId){
-        return array('roomName'=>'room1','roomId'=>'1','membCount'=>'10','messCount'=>'13','light'=>'150','managerId'=>'0');
+        $data = json_encode(array('roomId'=>$roomId));
+        return ServerApi::sendRequest($data,'roominfo');
     }
     public static function getAllFreeMembers(){
-        return array('2'=>array('id'=>2,'name'=>'member2','description'=>'member2 description'),'3'=>array('id'=>3,'name'=>'member3','description'=>'member3 description'));
-
+        return ServerApi::sendRequest('','getfreeemp');
     }
     public static function getRoomMembers($roomId){
-        return array('0'=>array('id'=>0,'name'=>'member0','description'=>'member0 description'),'1'=>array('id'=>1,'name'=>'member1','description'=>'member1 description'));
+        $data = json_encode(array('roomId'=>$roomId));
+        return ServerApi::sendRequest($data,'roommembers');
     }
-    public static function setRoomName($newName){
-        //метод-заглушка для изменения названия комнаты
-        return true;
+    public static function setRoomName($newName,$roomId){
+        $data = json_encode(array('name'=>$newName,'id'=>$roomId));
+        $res = ServerApi::sendRequest($data,'setroomname');
+        return $res;
     }
     public static function userFromRoom($id){
-        //метод-заглушка для удаления пользователя из комнаты
-        return array('id'=>$id,'roomId'=>'0','name'=>'member0','description'=>'member0 description');
+        $data = json_encode(array('id'=>$id));
+        $res = ServerApi::sendRequest($data,'fromroom');
+        if(!isset($res['error'])) return $res;
+        else return false;
     }
     public static function userToRoom($userId,$roomId){
-        return array('id'=>$userId,'roomId'=>$roomId,'name'=>'member0','description'=>'member0 description');
+        $data = json_encode(array('userid'=>$userId,'roomid'=>$roomId));
+        $res = ServerApi::sendRequest($data,'toroom');
+        if(!isset($res['error'])) return $res;
+        else return false;
     }
     public static function delRoom($roomId){
-        return array('managerId'=>'1');
+        $data = json_encode(array('roomId'=>$roomId));
+        $res = ServerApi::sendRequest($data,'delroom');
+        if(!isset($res['error'])) return $res;
+        else return false;
     }
-    public static function changeLight($newLight){
-        return true;
+    public static function changeLight($newLight,$roomId){
+        $data = json_encode(array('newLight'=>$newLight,'roomId'=>$roomId));
+        $res = ServerApi::sendRequest($data,'light');
+        if(!isset($res['error'])) return true;
+        else return false;
     }
 
 }

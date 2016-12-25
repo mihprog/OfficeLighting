@@ -1,22 +1,32 @@
 <?php
 
+require_once(ROOT.'/components/ServerApi.php');
+
 class ManagerModel
 {
     public static function getMessagesByManId($id){
-        return array('1'=>array('id'=>'1','person'=>'person1','message'=>'we need help!'),
-            '2'=>array('id'=>'2','person'=>'person2','message'=>'we need water!'));
+        $data = json_encode(array('id'=>$id));
+        $res = ServerApi::sendRequest($data,'getmess');
+        return $res;
     }
     public static function getRoomsByManId($id){
-        return array('1'=>array('id'=>'1','name'=>'room1','numPersons'=>'5'),
-            '2'=>array('id'=>'2','name'=>'room2','numPersons'=>'7'));
+        $data = json_encode(array('id'=>$id));
+        $res = ServerApi::sendRequest($data,'getrooms');
+        return $res;
     }
     public static function getManagerData($id){
-        return array('name'=>'Manager1','email'=>'manager@man.com','telephone'=>'+380963803464');
+        $data = json_encode(array('id'=>$id));
+        $res = ServerApi::sendRequest($data,'getmanager');
+        return $res;
     }
     public static function removeMessage($id){
+        $data = json_encode(array('id'=>$id));
+        $res = ServerApi::sendRequest($data,'rmmess');
         return true;
     }
-    public static function editData($name,$telephone){
-        return array('newName'=>'newManagerName','newTel'=>'+380963803463');
+    public static function editData($name,$telephone,$id){
+        $data = json_encode(array('name'=>$name,'tel'=>$telephone,'id'=>$id));
+        $res = ServerApi::sendRequest($data,'editman');
+        return array('newName'=>$name,'newTel'=>$telephone);
     }
 }

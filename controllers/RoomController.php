@@ -27,7 +27,8 @@ class RoomController
         }
         elseif($action=='edit_room_name'){
             $newName = json_decode($_POST['data'])->name;
-            if(RoomModel::setRoomName($newName))echo $newName;
+            $id = json_decode($_POST['data'])->id;
+            if(RoomModel::setRoomName($newName,$id))echo $newName;
             else echo 'fail';
         }
         elseif ($action=='delRoom'){
@@ -37,7 +38,7 @@ class RoomController
         }
         elseif ($action=='changeLight'){
             $newLight = $_POST['data'];
-            $res = RoomModel::changeLight($newLight);
+            $res = RoomModel::changeLight($newLight,$roomId);
             if(!$res)echo 'fail';
             else echo 'complete';
         }

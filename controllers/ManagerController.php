@@ -19,7 +19,8 @@ class ManagerController
         $data = json_decode($_POST['data']);
         $newName = $data->name;
         $newTelephone = $data->tel;
-        echo json_encode(ManagerModel::editData($newName,$newTelephone));
+        $id = $data->id;
+        echo json_encode(ManagerModel::editData($newName,$newTelephone,$id));
     }
     public function actionEditpswd(){
 

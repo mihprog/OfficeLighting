@@ -15,8 +15,9 @@ function roomNameEdit(response) {
         Materialize.toast('Error! Unable to change!', 3000, 'rounded');
     }
     else {
+        Materialize.toast('Completed!', 3000, 'rounded');
         $('#edt_name').val(response);
-        $('#roomName').html(response);
+        $('#roomName').html('Room '+response);
     }
 }
 
@@ -77,12 +78,12 @@ function removeRender(response){
     $('#body'+response).remove();
 }
 
-function editManager(name,tel){
-    sendWithAction({'name':name,'tel':tel},'editdata','http://officelighting.com/manager/editdata',editManagerRender);
+function editManager(name,tel,id){
+    sendWithAction({'name':name,'tel':tel,'id':id},'editdata','http://officelighting.com/manager/editdata',editManagerRender);
 }
 function editManagerRender(response) {
     response = JSON.parse(response);
-    $('#name').html('Hello '+response.newName);
+    $('#name').html('Hello '+response.newName+"!");
     $('#span_name').html('Name: '+response.newName);
     $('#telephone').html('Your telephone: '+response.newTel);
     $('#span_tel').html('Telephone: '+response.newTel);

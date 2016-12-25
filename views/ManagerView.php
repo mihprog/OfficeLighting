@@ -56,7 +56,7 @@
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
-                <a onclick="editManager($('#edt_name').val(),$('#edt_telephone').val())" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
+                <a onclick="editManager($('#edt_name').val(),$('#edt_telephone').val(),'<?php echo $managerData['id']?>')" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
                 <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>
@@ -74,7 +74,7 @@
                 </form>
             </div>
             <div id="buttonsPassword" class="col">
-                <a onclick="register(['edt_psw','rpt_psw'],'edit.php?action=password')" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
+                <a onclick="" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
                 <a href="" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>

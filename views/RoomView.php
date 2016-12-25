@@ -43,7 +43,7 @@
                 </form>
             </div>
             <div id="buttonsEdit" class="col">
-                <a onclick="sendWithAction({'name':$('#edt_name').val()},'edit_room_name','<?php echo $roomInfo['roomId']?>/edit_room_name/',roomNameEdit);" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
+                <a onclick="sendWithAction({'name':$('#edt_name').val(),'id':<?php echo $roomInfo['roomId']?>},'edit_room_name','<?php echo $roomInfo['roomId']?>/edit_room_name/',roomNameEdit);" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">Edit</a>
                 <a href="#!" class="logoutButton waves-effect waves-light btn modal-action modal-close indigo darken-2 white-text">
                     Close
                 </a>
